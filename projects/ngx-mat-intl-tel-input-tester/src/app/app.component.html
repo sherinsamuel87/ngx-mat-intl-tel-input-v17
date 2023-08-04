@@ -1,7 +1,7 @@
 <div style="margin: 50px">
   <h3 id="phoneInput">Test International Telephone Input Form</h3>
   <br />
-  <form #f="ngForm" [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
+  <form class="d-flex align" #f="ngForm" [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input
@@ -32,6 +32,7 @@
         [preferredCountries]="['us', 'ca']"
         [enablePlaceholder]="true"
         [formControl]="phoneForm.controls.phone"
+        [enableSearch]="true"
         placeholder="Enter Number"
         describedBy="phoneInput"
         #phone
