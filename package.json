@@ -10,11 +10,11 @@
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build_lib": "ng build ngx-mat-intl-tel-input-v16",
-    "npm_pack": "cd dist/ngx-mat-intl-tel-input-v16 && npm pack",
+    "build_lib": "ng build ngx-mat-intl-tel-input",
+    "npm_pack": "cd dist/ngx-mat-intl-tel-input && npm pack",
     "package": "npm run build_lib && npm run copy-files && npm run npm_pack",
-    "copy-license": "cp ./LICENSE ./dist/ngx-mat-intl-tel-input-v16",
-    "copy-readme": "cp ./README.md ./dist/ngx-mat-intl-tel-input-v16",
+    "copy-license": "cp ./LICENSE ./dist/ngx-mat-intl-tel-input",
+    "copy-readme": "cp ./README.md ./dist/ngx-mat-intl-tel-input",
     "copy-files": "npm run copy-license && npm run copy-readme"
   },
   "private": true,
@@ -67,5 +67,20 @@
     "protractor": "~7.0.0",
     "ts-node": "^10.8.1",
     "typescript": "~4.9.5"
-  }
+  },
+  "description": "An Angular Material package for entering and validating international telephone numbers. It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sherinsamuel71/ngx-mat-intl-tel-input-v16.git"
+  },
+  "keywords": [
+    "ngx-mat-intl-tel-input"
+  ],
+  "author": "sherin-samuel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sherinsamuel71/ngx-mat-intl-tel-input-v16/issues"
+  },
+  "homepage": "https://github.com/sherinsamuel71/ngx-mat-intl-tel-input-v16#readme"
 }

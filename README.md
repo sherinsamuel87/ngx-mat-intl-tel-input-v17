@@ -4,8 +4,8 @@ An Angular Material package for entering and validating international telephone 
 
 **Supports:**
 
-- Angular 14
-- Angular Material 14
+- Angular 16
+- Angular Material 16
 - ReactiveFormsModule
 - FormsModule
 - Validation with [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js)
@@ -18,7 +18,7 @@ An Angular Material package for entering and validating international telephone 
 
 ### Install This Library
 
-`$ npm install ngx-mat-intl-tel-input --save`
+`$ npm install ngx-mat-intl-tel-input-v16 --save`
 
 ## Usage
 
