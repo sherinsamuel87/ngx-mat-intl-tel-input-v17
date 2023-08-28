@@ -123,6 +123,7 @@ export class NgxMatIntlTelInputComponent
   @Input() enableSearch = false;
   @Input() searchPlaceholder: string | undefined;
   @Input() describedBy = '';
+  @Input() label = '';
 
   @Input()
   get format(): PhoneNumberFormat {
