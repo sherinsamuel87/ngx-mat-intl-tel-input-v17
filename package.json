@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-intl-tel-input-v16",
-  "version": "16.0.0",
+  "version": "16.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -78,7 +78,7 @@
     "ngx-mat-intl-tel-input"
   ],
   "author": "sherin-samuel",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sherinsamuel71/ngx-mat-intl-tel-input-v16/issues"
   },
