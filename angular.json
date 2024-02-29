@@ -63,7 +63,7 @@
             "outputPath": "dist/ngx-mat-intl-tel-input-tester",
             "index": "projects/ngx-mat-intl-tel-input-tester/src/index.html",
             "main": "projects/ngx-mat-intl-tel-input-tester/src/main.ts",
-            "polyfills": "projects/ngx-mat-intl-tel-input-tester/src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/ngx-mat-intl-tel-input-tester/tsconfig.app.json",
             "assets": [
               "projects/ngx-mat-intl-tel-input-tester/src/favicon.ico",
@@ -125,7 +125,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ngx-mat-intl-tel-input-tester/src/test.ts",
-            "polyfills": "projects/ngx-mat-intl-tel-input-tester/src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/ngx-mat-intl-tel-input-tester/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-mat-intl-tel-input-tester/karma.conf.js",
             "assets": [
