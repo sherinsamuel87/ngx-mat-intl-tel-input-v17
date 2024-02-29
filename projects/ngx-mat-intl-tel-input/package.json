@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-intl-tel-input",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "peerDependencies": {
     "@angular/common": ">=14.x",
     "@angular/core": ">=14.x",
@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanansatpal/ngx-mat-intl-tel-input"
+    "url": "git+https://github.com/sherinsamuel71/ngx-mat-intl-tel-input-v16.git"
   },
   "author": {
-    "name": "Satpal Tanan",
-    "email": "tanansatpal@gmail.com"
+    "name": "sherin-samuel",
+    "email": "sherinsamuel713@gmail.com"
   },
   "keywords": [
     "angular",
