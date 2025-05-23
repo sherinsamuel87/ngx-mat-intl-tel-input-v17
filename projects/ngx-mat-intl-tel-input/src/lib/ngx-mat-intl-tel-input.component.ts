@@ -46,20 +46,25 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import {
-  CanUpdateErrorState,
   ErrorStateMatcher,
-  mixinErrorState,
-  _AbstractConstructor,
-  _Constructor,
+  
 } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { Subject } from 'rxjs';
 import { SearchPipe } from './search.pipe';
+// Define interface to satisfy error state and stateChanges requirement
+interface HasErrorState {
+  errorState: boolean;
+  stateChanges: Subject<void>;
+}
+
+type CanUpdateErrorStateCtor = new (...args: any[]) => HasErrorState;
 
 class NgxMatIntlTelInputBase {
   readonly stateChanges = new Subject<void>();
+  errorState = false;
   constructor(
     public _defaultErrorStateMatcher: ErrorStateMatcher,
     public _parentForm: NgForm,
@@ -69,48 +74,43 @@ class NgxMatIntlTelInputBase {
   ) {}
 }
 
-declare type CanUpdateErrorStateCtor = _Constructor<CanUpdateErrorState> &
-  _AbstractConstructor<CanUpdateErrorState>;
-
-const _NgxMatIntlTelInputMixinBase: CanUpdateErrorStateCtor &
-  typeof NgxMatIntlTelInputBase = mixinErrorState(NgxMatIntlTelInputBase);
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'ngx-mat-intl-tel-input',
-    templateUrl: './ngx-mat-intl-tel-input.component.html',
-    styleUrls: ['./ngx-mat-intl-tel-input.component.scss'],
-    imports: [
-        CommonModule,
-        FormsModule,
-        MatInputModule,
-        MatMenuModule,
-        MatButtonModule,
-        MatDividerModule,
-        ReactiveFormsModule,
-        SearchPipe
-    ],
-    providers: [
-        CountryCode,
-        { provide: MatFormFieldControl, useExisting: NgxMatIntlTelInputComponent },
-        {
-            provide: NG_VALIDATORS,
-            useValue: phoneNumberValidator,
-            multi: true,
-        },
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-mat-intl-tel-input',
+  templateUrl: './ngx-mat-intl-tel-input.component.html',
+  styleUrls: ['./ngx-mat-intl-tel-input.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatDividerModule,
+    ReactiveFormsModule,
+    SearchPipe
+  ],
+  providers: [
+    CountryCode,
+    { provide: MatFormFieldControl, useExisting: NgxMatIntlTelInputComponent },
+    {
+      provide: NG_VALIDATORS,
+      useValue: phoneNumberValidator,
+      multi: true,
+    },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxMatIntlTelInputComponent
-  extends _NgxMatIntlTelInputMixinBase
-  implements
-    OnInit,
-    OnDestroy,
-    DoCheck,
-    CanUpdateErrorState,
-    MatFormFieldControl<any>
+  extends NgxMatIntlTelInputBase
+  implements 
+  OnInit, 
+  OnDestroy, 
+  DoCheck, 
+  MatFormFieldControl<any>
 {
   static nextId = 0;
+  errorState = false;
 
   @Input() preferredCountries: Array<string> = [];
   @Input() enablePlaceholder = true;
@@ -143,7 +143,7 @@ export class NgxMatIntlTelInputComponent
   focused = false;
   @HostBinding()
   id = `ngx-mat-intl-tel-input-${NgxMatIntlTelInputComponent.nextId++}`;
-  phoneNumber: NationalNumber | undefined;
+  phoneNumber: NationalNumber | any;
   allCountries: Array<Country> = [];
   preferredCountriesInDropDown: Array<Country> = [];
   selectedCountry: Country | undefined;
@@ -227,35 +227,41 @@ export class NgxMatIntlTelInputComponent
       this.updateErrorState();
     }
   }
+updateErrorState() {
+  // logic to update error state, e.g.:
+  this.stateChanges.next();
+}
 
-  public onPhoneNumberChange(): void {
-    try {
-      this.numberInstance = parsePhoneNumberFromString(
-        this.phoneNumber?.toString() || '',
-        this.selectedCountry?.iso2.toUpperCase() as CC
-      );
-      this.formatAsYouTypeIfEnabled();
-      this.value = this.numberInstance?.number;
-      if (this.numberInstance && this.numberInstance.isValid()) {
-        if (this.phoneNumber !== this.formattedPhoneNumber) {
-          this.phoneNumber = this.formattedPhoneNumber;
-        }
-        if (
-          this.selectedCountry?.iso2 !== this.numberInstance.country &&
-          !!this.numberInstance.country
-        ) {
-          this.selectedCountry = this.getCountry(this.numberInstance.country);
-          this.countryChanged.emit(this.selectedCountry);
-        }
+
+
+public onPhoneNumberChange(): void {
+  try {
+    this.numberInstance = parsePhoneNumberFromString(
+      this.phoneNumber?.toString() || '',
+      this.selectedCountry?.iso2.toUpperCase() as CC
+    );
+    this.formatAsYouTypeIfEnabled();
+    this.value = this.numberInstance?.number;
+    if (this.numberInstance && this.numberInstance.isValid()) {
+      if (this.phoneNumber !== this.formattedPhoneNumber) {
+        this.phoneNumber = this.formattedPhoneNumber;
       }
-    } catch (e) {
-      // if no possible numbers are there,
+      if (
+        this.selectedCountry?.iso2 !== this.numberInstance.country &&
+        !!this.numberInstance.country
+      ) {
+        this.selectedCountry = this.getCountry(this.numberInstance.country);
+        this.countryChanged.emit(this.selectedCountry);
+      }
+    }
+  } catch (e) {
+          // if no possible numbers are there,
       // then the full number is passed so that validator could be triggered and proper error could be shown
       this.value = this.phoneNumber?.toString();
-    }
-    this.propagateChange(this.value);
-    this._changeDetectorRef.markForCheck();
-  }
+    }  
+  this.propagateChange(this.value);
+  this._changeDetectorRef.markForCheck();
+}
 
   public onCountrySelect(country: Country, el: MatInput): void {
     if (this.phoneNumber) {
