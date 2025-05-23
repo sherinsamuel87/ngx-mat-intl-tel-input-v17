@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "strict": true,
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "es2020",
+      "dom"
+    ],
+    "paths": {
+      "ngx-mat-intl-tel-input": [
+        "dist/ngx-mat-intl-tel-input"
+      ],
+      "ngx-mat-intl-tel-input/*": [
+        "dist/ngx-mat-intl-tel-input/*"
+      ]
+    },
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "compilationMode": "partial"
+  }
+}
