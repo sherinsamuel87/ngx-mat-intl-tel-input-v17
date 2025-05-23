@@ -76,31 +76,30 @@ const _NgxMatIntlTelInputMixinBase: CanUpdateErrorStateCtor &
   typeof NgxMatIntlTelInputBase = mixinErrorState(NgxMatIntlTelInputBase);
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'ngx-mat-intl-tel-input',
-  templateUrl: './ngx-mat-intl-tel-input.component.html',
-  styleUrls: ['./ngx-mat-intl-tel-input.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatInputModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatDividerModule,
-    ReactiveFormsModule,
-    SearchPipe
-  ],
-  providers: [
-    CountryCode,
-    { provide: MatFormFieldControl, useExisting: NgxMatIntlTelInputComponent },
-    {
-      provide: NG_VALIDATORS,
-      useValue: phoneNumberValidator,
-      multi: true,
-    },
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'ngx-mat-intl-tel-input',
+    templateUrl: './ngx-mat-intl-tel-input.component.html',
+    styleUrls: ['./ngx-mat-intl-tel-input.component.scss'],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatInputModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatDividerModule,
+        ReactiveFormsModule,
+        SearchPipe
+    ],
+    providers: [
+        CountryCode,
+        { provide: MatFormFieldControl, useExisting: NgxMatIntlTelInputComponent },
+        {
+            provide: NG_VALIDATORS,
+            useValue: phoneNumberValidator,
+            multi: true,
+        },
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxMatIntlTelInputComponent
   extends _NgxMatIntlTelInputMixinBase

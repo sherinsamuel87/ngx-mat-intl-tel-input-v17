@@ -25,19 +25,18 @@ interface ProfileForm {
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDividerModule,
-    NgxMatIntlTelInputComponent,
-  ],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDividerModule,
+        NgxMatIntlTelInputComponent,
+    ]
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild(NgxMatIntlTelInputComponent) phoneInput:
