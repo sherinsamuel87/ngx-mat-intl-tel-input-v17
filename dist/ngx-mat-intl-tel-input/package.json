@@ -1,0 +1,66 @@
+{
+  "name": "ngx-mat-intl-tel-input-v17",
+  "version": "17.1.0",
+  "peerDependencies": {
+    "@angular/common": ">=14.x",
+    "@angular/core": ">=14.x",
+    "@angular/forms": ">=14.x",
+    "@angular/platform-browser": ">=14.x",
+    "@angular/platform-browser-dynamic": ">=14.x",
+    "libphonenumber-js": "^1.10.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sherinsamuel71/ngx-mat-intl-tel-input-v16.git"
+  },
+  "author": {
+    "name": "sherin-samuel",
+    "email": "sherinsamuel713@gmail.com"
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "ng2",
+    "ng4",
+    "ng5",
+    "ng6",
+    "ng7",
+    "ng8",
+    "ng9",
+    "ng10",
+    "ng11",
+    "ng12",
+    "ng13",
+    "ng14",
+    "intl-tel-input",
+    "ng-intl-tel-input",
+    "phone number",
+    "phone",
+    "validation",
+    "international",
+    "i18n",
+    "country",
+    "dial",
+    "code",
+    "telephone",
+    "mobile",
+    "input",
+    "flag"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.x"
+  },
+  "module": "fesm2022/ngx-mat-intl-tel-input-v17.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./fesm2022/ngx-mat-intl-tel-input-v17.mjs"
+    }
+  },
+  "sideEffects": false
+}
