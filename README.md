@@ -4,8 +4,8 @@ An Angular Material package for entering and validating international telephone 
 
 **Supports:**
 
-- Angular 17
-- Angular Material 17
+- Angular 20
+- Angular Material 20
 - ReactiveFormsModule
 - FormsModule
 - Validation with [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js)
